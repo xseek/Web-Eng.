@@ -126,7 +126,7 @@ router.get('/user/:user_id', async (req, res) => {
             //remove usera
             await User.findOneAndRemove({ _id: req.user.id })
 
-            res.json(msg: 'User deleted');
+            res.json({ msg: 'User deleted' });
         } catch (err) {
             console.error(err.message);
             res.status(500).send('Server Error');
