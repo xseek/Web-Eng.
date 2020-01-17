@@ -6,7 +6,8 @@ const ProfileSchema = new mongoose.Schema({
         ref: 'user'
     },
     favorites: {
-        type: String
+        name:{type: String},
+        author:{type: String}
     },
     social:{
         youtube:{
