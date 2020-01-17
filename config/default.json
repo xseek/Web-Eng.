@@ -1,0 +1,4 @@
+{
+    "mongoURI":"mongodb+srv://zerin_free@hotmail.com:timeleft1337@cluster0-w369f.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtSecret": "token"
+}
