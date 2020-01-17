@@ -132,7 +132,44 @@ router.get('/user/:user_id', async (req, res) => {
             res.status(500).send('Server Error');
         }
         });
+//put req api/profile/favorites
+//public
 
+router.put(
+'/favorites'
+,
+[
+    
+],
+async (req, res) => {
+    const errors = validationResult(req);
+    if(!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+    const {
+        favorites
+
+    } = req.body;
+
+    const newFav = {
+        title,
+        author
+    }
+
+    try {
+        const profile = await Profile.findOne({ user: req.user.id });
+
+        profile.favorites.unshift(newFav);
+
+        await profile.save();
+        res.json(profile);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+        
+    }
+}
+);
     
 
 module.exports = router;
