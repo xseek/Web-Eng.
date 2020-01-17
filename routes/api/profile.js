@@ -170,6 +170,27 @@ async (req, res) => {
     }
 }
 );
-    
+
+//delete req fav
+// private
+router.delete('/favorites/:fav_id', auth, async, (req, res) => {
+try {
+    const profile = await Profile.findOne({ user: req.user.id });
+
+    //get remove index
+    const removeIndex = profile.favorites.map(item =>  item.id).indexOf(req.params.fav_id);
+
+    profile.favorites.splice(removeIndex, 1);
+
+    await profile.save();
+
+    res.json(profile);
+} catch (err) {
+    console.error(err.message);
+        res.status(500).send('Server Error');
+        
+}
+})
+
 
 module.exports = router;
